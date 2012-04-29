@@ -1,29 +1,29 @@
-/* Cortiné Automatique des Felipe Navarro
+/* Cortinï¿½ Automatique des Felipe Navarro
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE":
- * <felnavarro2@gmail.com> wrote this file. As long as you retain this notice
+ * Felipe Navarro (http://www.felipenavarro.net) wrote this file. As long as you retain this notice
  * you can do whatever you want with this stuff. If we meet some day, and you think
  * this stuff is worth it, you can buy me a beer in return. Please, don't pay me:
  * Skol and Antartica. We are brazilian but we love Budweiser and Stella.
  * ----------------------------------------------------------------------------
  */
 
-#include <avr/wdt.h> //rotinas de interrupção do avr-gcc
+#include <avr/wdt.h> //rotinas de interrupï¿½ï¿½o do avr-gcc
 
-//Botões em pinos sem PWM
+//Botï¿½es em pinos sem PWM
 const int b_desce = 8;
 const int b_sobe= 7;
 
-//Saída para o comando dos motores
+//Saï¿½da para o comando dos motores
 const int desce = 13;//original 11, 13 para teste
 const int sobe = 10;
 
-/*Sensores de subida máxima e descida máxima
-int smax = 2; //interrupção 0
-int dmax = 3;//interrupção 1
+/*Sensores de subida mï¿½xima e descida mï¿½xima
+int smax = 2; //interrupï¿½ï¿½o 0
+int dmax = 3;//interrupï¿½ï¿½o 1
 */
 
-#define VARDELAY 4000 //Quanto para o botão ser pressionado e descer ou subir até o final?
+#define VARDELAY 4000 //Quanto para o botï¿½o ser pressionado e descer ou subir atï¿½ o final?
 
 int bsobe,bdesce;
 
@@ -51,7 +51,7 @@ void setup(){
     digitalWrite(sobe, LOW); digitalWrite(desce, LOW);
   }
 
-  //FUNÇÃO SUBIR
+  //FUNï¿½ï¿½O SUBIR
   if(bdesce == 0 && bsobe == 1){
     digitalWrite(desce, HIGH); digitalWrite(sobe, LOW);
     delay(VARDELAY);
@@ -62,7 +62,7 @@ void setup(){
          digitalWrite(desce, LOW);
   }
 }
-  //FUNÇÃO DESCE
+  //FUNï¿½ï¿½O DESCE
   if(bsobe == 0 && bdesce == 1){
    digitalWrite(sobe, HIGH); digitalWrite(desce,LOW);
    delay(VARDELAY);
@@ -76,7 +76,7 @@ void setup(){
   
 } //Fim do Loop Principal
 
-//Rotinas de interrupção abaixo
+//Rotinas de interrupï¿½ï¿½o abaixo
 void smax(){
   digitalWrite(sobe, LOW); digitalWrite(desce, LOW);
   asm volatile (" jmp 0");    
